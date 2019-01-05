@@ -1,5 +1,6 @@
 import React from 'react';
 import PivotTableUI from 'react-pivottable/PivotTableUI';
+import PivotTable from 'react-pivottable/PivotTable'; // possible to save the rendered result
 import 'react-pivottable/pivottable.css';
 import TableRenderers from 'react-pivottable/TableRenderers';
 import Plot from 'react-plotly.js';
@@ -28,7 +29,18 @@ class App extends React.Component {
                 renderers={Object.assign({}, TableRenderers, PlotlyRenderers)}
                 {...this.state}
             />
+
+            <div className="row">
+            <PivotTable  data={data}
+                            onChange={s => this.setState(s)}
+                            renderers={Object.assign({}, TableRenderers, PlotlyRenderers)}
+                            {...this.state}
+                        
+                        />
+            </div>
+
       </div>
+
     );
   }
 }
