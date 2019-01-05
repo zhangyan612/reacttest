@@ -1,28 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PivotTableUI from 'react-pivottable/PivotTableUI';
+import 'react-pivottable/pivottable.css';
+import TableRenderers from 'react-pivottable/TableRenderers';
+import Plot from 'react-plotly.js';
+import createPlotlyRenderers from 'react-pivottable/PlotlyRenderers';
 
-class App extends Component {
+// create Plotly renderers via dependency injection
+const PlotlyRenderers = createPlotlyRenderers(Plot);
+
+// see documentation for supported input formats
+const data = [['attribute', 'attribute2'], ['value1', 'value2']];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = props;
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Test
-          </a>
-        </header>
+            <PivotTableUI
+                data={data}
+                onChange={s => this.setState(s)}
+                renderers={Object.assign({}, TableRenderers, PlotlyRenderers)}
+                {...this.state}
+            />
       </div>
     );
   }
 }
+
 
 export default App;
