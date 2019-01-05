@@ -4,12 +4,14 @@ import 'react-pivottable/pivottable.css';
 import TableRenderers from 'react-pivottable/TableRenderers';
 import Plot from 'react-plotly.js';
 import createPlotlyRenderers from 'react-pivottable/PlotlyRenderers';
+import data from './data';
+import './App.css';
 
 // create Plotly renderers via dependency injection
 const PlotlyRenderers = createPlotlyRenderers(Plot);
 
 // see documentation for supported input formats
-const data = [['attribute', 'attribute2'], ['value1', 'value2']];
+//const data = [['attribute', 'attribute2'], ['value1', 'value2']];
 
 class App extends React.Component {
   constructor(props) {
